@@ -1,26 +1,83 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class = "container">
+    <div class = "input-container">
+      <div style = "height: 6vh;"></div>
+      <div class = "title">PCEC.club</div>
+      <div style = "height: 6vh;"></div>
+      <AnimatedInput hint-text="账号"></AnimatedInput>
+      <div style = "height: 3vh;"></div>
+      <AnimatedInput hint-text="密码"></AnimatedInput>
+      <div style = "height: 5vh;"></div>
+      <div class = "divider"></div>
+      <div class = "footer-container">
+        <div class = "footer-font-left">忘记密码？</div>
+        <div class = "footer-font-right">注册账号</div>
+      </div>
+    </div>
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import AnimatedInput from './components/AnimatedInput.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    AnimatedInput
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+  .divider {
+    width: 35vw;
+    height: 0.1vh;
+    background-color: rgba(76, 76, 76, 0.4);
+    margin: auto;
+  }
+
+  .footer-container {
+    font-size: 15px;
+    position: relative;
+    margin: auto;
+    height: 10vh;
+    width: 30vw;
+    color: white;
+    display: flex;
+  }
+
+  .footer-font-left {
+    position: absolute;
+    left: 0px;
+    top: calc(50% - 10px);
+  }
+
+  .footer-font-right {
+    position: absolute;
+    right: 0px;
+    top: calc(50% - 10px);
+  }
+
+  .title {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+  }
+
+  .container {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(45deg, #4568DC, #B06AB3);
+  }
+
+  .input-container {
+    box-shadow: 0 0 80px 10px #2b2e4a;
+    padding: 40px;
+    position: absolute;
+    top: calc(50% - 40vh);
+    left: calc(50% - 20vw);
+    background: #2b2e4a;
+    height: 80vh;
+    width: 40vw;
+  }
 </style>

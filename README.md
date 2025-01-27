@@ -1,4 +1,5 @@
 # starcraft_frontend
+<<<<<<< HEAD
 
 ## Project setup
 ```
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+a starcraft II online website platform developed with vue
+>>>>>>> e0dfab33a6b770c9618fcbe6e5bf87f5e6178ab2
