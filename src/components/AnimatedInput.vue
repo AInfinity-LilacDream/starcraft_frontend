@@ -16,7 +16,7 @@ import { onMounted, ref, defineProps } from 'vue';
 const props = defineProps({
     hintText: {
         type: String,
-        require: true
+        required: true
     }
 });
 
