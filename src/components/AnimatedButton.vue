@@ -15,7 +15,8 @@ const props = defineProps({
 
 <style scoped>
     .animated-button {
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
         height: 4vh;
         width: 6vw;
         display: flex;

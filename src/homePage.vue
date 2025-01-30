@@ -1,20 +1,30 @@
 <template>
     <div class="container">
         <ul>
-            <li class = "active"><a href="#"><span>1v1</span></a></li>
-            <li><a href="#"><span>2v2</span></a></li>
-            <li><a href="#"><span>3v3</span></a></li>
-            <li><a href="#"><span>4v4</span></a></li>
-            <li><a href="#"><span>5v5</span></a></li>
+            <li class = "active"><a href="#" id = "1"><span>1v1</span></a></li>
+            <li><a href="#" id = "2"><span>2v2</span></a></li>
+            <li><a href="#" id = "3"><span>3v3</span></a></li>
+            <li><a href="#" id = "4"><span>4v4</span></a></li>
             <div id="marker" ref="marker"></div>
         </ul>
+        <onevsone v-if = "id === 1"></onevsone>
+        <twovstwo v-if = "id === 2"></twovstwo>
+        <thrvsthr v-if = "id === 3"></thrvsthr>
+        <forvsfor v-if = "id === 4"></forvsfor>
+        
     </div>
 
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import onevsone from './components/1v1.vue';
+import twovstwo from './components/2v2.vue';
+import thrvsthr from './components/3v3.vue';
+import forvsfor from './components/4v4.vue';
+
 const marker = ref(null);
+const id = ref(1);
 
 onMounted(() => {
     let list = document.querySelectorAll('ul li');
@@ -37,6 +47,7 @@ onMounted(() => {
     list.forEach(link => {
         link.addEventListener('click', (e) => {
             moveIndicator(e.target);
+            id.value = parseInt(e.target.id);
         })
         link.addEventListener('click', activeLink);
     })
@@ -59,10 +70,10 @@ ul {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     border-radius: 10px;
+    height: 100%;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 ul li {
@@ -75,7 +86,6 @@ ul li a {
     align-items: center;
     color: white;
     min-height: 8vh;
-    background: rgba(0, 0, 0, 0.4);
     text-decoration: none;
     backdrop-filter: blur(15px);
     padding: 20px 30px;
@@ -142,13 +152,5 @@ ul li:nth-child(4).active~#marker::before {
         0 0 30px yellow,
         0 0 45px yellow,
         0 0 60px yellow;
-}
-
-ul li:nth-child(5).active~#marker::before {
-    background: purple;
-    box-shadow: 0 0 15px purple,
-        0 0 30px purple,
-        0 0 45px purple,
-        0 0 60px purple;
 }
 </style>
