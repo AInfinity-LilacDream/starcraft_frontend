@@ -77,7 +77,6 @@ function login() {
 
   .input-container {
     box-shadow: 0 0 80px 10px #2b2e4a;
-    padding: 40px;
     position: absolute;
     top: calc(50% - 40vh);
     left: calc(50% - 20vw);

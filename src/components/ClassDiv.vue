@@ -2,7 +2,7 @@
     <div class = "container">
         <div class = "icon" ref = "rationdiv">{{ ration }}</div>
         <div style = "height: 10px;"></div>
-        <div class = "text">{{ mmr }}</div>
+        <div class = "text" v-if = "mmr != -1">{{ mmr }}</div>
     </div>
 </template>
 

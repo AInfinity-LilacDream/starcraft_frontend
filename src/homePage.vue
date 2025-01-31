@@ -62,7 +62,7 @@ onMounted(() => {
     align-items: center;
     height: 100%;
     width: 100%;
-    background: #1e2759;
+    background: linear-gradient(to right, #114357, #F29492);
 }
 
 ul {
