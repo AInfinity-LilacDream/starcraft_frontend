@@ -12,8 +12,8 @@
                         </svg>
                     </button>
                 </li>
-                <li class="active">
-                    <button @click="toggleSubMenu" class="dropdown-btn">
+                <li>
+                    <button @click="toggleSubMenu" class="dropdown-btn active" :ref="el => tile[1] = el" id = "1">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e8eaed">
                             <path
@@ -27,12 +27,12 @@
                     </button>
                     <ul class="sub-menu">
                         <div>
-                            <li><a href="#">1v1</a></li>
-                            <li><a href="#">2v2</a></li>
-                            <li><a href="#">3v3</a></li>
-                            <li><a href="#">4v4</a></li>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[2] = el" id = "2" class = "active ">1v1</a></li>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[3] = el" id = "3">2v2</a></li>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[4] = el" id = "4">3v3</a></li>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[5] = el" id = "5">4v4</a></li>
                             <li>
-                                <a href="#">
+                                <a href="#" @click="switchPage" :ref="el => tile[6] = el" id = "6">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                         width="24px" fill="#e8eaed">
                                         <path
@@ -45,7 +45,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" @click="switchPage" :ref="el => tile[7] = el" id = "7">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e8eaed">
                             <path
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" @click="switchPage" :ref="el => tile[8] = el" id = "8">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e8eaed">
                             <path
@@ -65,19 +65,29 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" @click="switchPage" :ref="el => tile[9] = el" id = "9">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e8eaed">
                             <path
-                                d="m380-340 280-180-280-180v360Zm-60 220v-80H160q-33 0-56.5-23.5T80-280v-480q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v480q0 33-23.5 56.5T800-200H640v80H320ZM160-280h640v-480H160v480Zm0 0v-480 480Z" />
+                                d="M400-400h160v-80H400v80Zm0-120h320v-80H400v80Zm0-120h320v-80H400v80Zm-80 400q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
                         </svg>
-                        <span>直播间</span>
+                        <span>外挂图鉴</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" @click="switchPage" :ref="el => tile[10] = el" id = "10">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e8eaed">
+                            <path
+                                d="M160-40v-240h100v-80H160v-240h100v-80H160v-240h280v240H340v80h100v80h120v-80h280v240H560v-80H440v80H340v80h100v240H160Zm80-80h120v-80H240v80Zm0-320h120v-80H240v80Zm400 0h120v-80H640v80ZM240-760h120v-80H240v80Zm60-40Zm0 320Zm400 0ZM300-160Z" />
+                        </svg>
+                        <span>比赛信息</span>
                     </a>
                 </li>
             </ul>
         </aside>
         <main>
-            <findMatch></findMatch>
+            <findMatch v-if = "id >= 2 && id <= 5" :mode = "`${id - 1}v${id - 1}`"></findMatch>
         </main>
     </div>
 </template>
@@ -86,8 +96,14 @@
 import { onMounted, ref } from 'vue';
 import findMatch from './components/FindMatch.vue';
 
+let currentPage = 2;
+
 const sidebarBtn = ref(null);
 const sidebar = ref(null);
+
+const tile = ref([]);
+
+var id = 2;
 
 function toggleSubMenu(event) {
     event.currentTarget.nextElementSibling.classList.toggle('show')
@@ -109,8 +125,19 @@ function toggleSidebar() {
     })
 }
 
-onMounted(() => {
-})
+function switchPage(event) {
+    if (event.currentTarget.classList.contains("active")) {
+        return;
+    }
+
+    for (let i = 1; i <= 10; i++) {
+        tile.value[i].classList.remove('active');
+    }
+
+    id = parseInt(event.currentTarget.id);
+    tile.value[id].classList.toggle('active');
+    if (id >= 2 && id <= 6) tile.value[1].classList.toggle('active');
+}
 </script>
 
 <style>
@@ -175,10 +202,20 @@ main p {
     overflow: hidden;
     text-wrap: nowrap;
 }
+#sidebar * {
+    transition: color 100ms ease-in-out, background-color 100ms ease-in-out, fill 100ms ease-in-out;
+}
 
 #sidebar.close {
     padding: 5px;
     width: 60px;
+}
+
+.active {
+    color: var(--accent-clr) !important;
+}
+.active svg {
+    fill: var(--accent-clr) !important;
 }
 
 #sidebar ul {
@@ -201,7 +238,7 @@ main p {
     border-radius: .5em;
     padding: .85em;
     text-decoration: none;
-    color: var(--text-clr) !important;
+    color: var(--text-clr);
     display: flex;
     align-items: center;
     gap: 1em;
@@ -274,4 +311,5 @@ main p {
 #toggle-btn:hover {
     background-color: var(--hover-clr);
 }
+
 </style>

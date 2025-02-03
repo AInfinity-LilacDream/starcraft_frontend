@@ -53,15 +53,25 @@
             </div>
         </div>
     </div>
-    <div class = "start-button">
-        <a href = "#"><span>开始匹配</span></a>
-        <div style = "width: 100px;"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg>
+    <div class="start-button-container">
+        <div class="start-button">
+            <a href="#"><span>开始匹配</span></a>
+            <div style="width: 100px;"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+            </svg>
+        </div>
+        <div style="width: 30px;"></div>
+        <span class = "match-text">{{ mode }}</span>
     </div>
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
+
+const props = defineProps({
+    mode: String,
+});
 
 onMounted(() => {
     Array.from(document.getElementsByClassName('class-selection')).forEach((el) => {
@@ -95,6 +105,19 @@ onMounted(() => {
     --text-clr: #e6e6ef;
     --accent-clr: #5e63ff;
     --secondary-text-clr: #b0b3c1;
+}
+
+.start-button-container {
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+}
+
+.match-text {
+    font-size: 25px;   
 }
 
 .top-container {
@@ -166,8 +189,6 @@ onMounted(() => {
 }
 
 .start-button {
-    margin: auto;
-    margin-top: 20px;
     height: 80px;
     width: 300px;
     display: flex;
@@ -182,19 +203,22 @@ onMounted(() => {
         transition: fill 0.1s ease-in-out;
     }
 }
+
 .start-button a {
     text-decoration: none;
     color: #e6e6ef;
     transition: color 0.1s ease-in-out;
 }
+
 .start-button:hover {
     background-color: #e6e6ef;
+
     a {
         color: #11121a;
     }
+
     svg {
         fill: #11121a;
     }
 }
-
 </style>
