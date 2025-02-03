@@ -88,6 +88,7 @@
         </aside>
         <main>
             <findMatch v-if = "id >= 2 && id <= 5" :mode = "`${id - 1}v${id - 1}`"></findMatch>
+            <matchInfo v-if = "id == 7"></matchInfo>
         </main>
     </div>
 </template>
@@ -95,6 +96,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import findMatch from './components/FindMatch.vue';
+import matchInfo from './components/MatchInfoPublicity.vue';
 
 let currentPage = 2;
 
