@@ -1,15 +1,19 @@
 <template>
     <div class="login-form">
-        <span class="login-text">登录</span>
+        <span class="login-text">注册</span>
         <form method="post">
+            <input type="text" id="name" class="login-input" placeholder="用户名" required>
+            <br>
+            <input type="password" id="password" class="login-input" placeholder="密码" required>
+            <br>
+            <input type="password" id="confirmPassword" class="login-input" placeholder="确认密码" required>
+            <br>
             <input type="text" id="name" class="login-input-2" placeholder="手机号" required>
             <button class="login-send-code">发送</button>
             <br>
             <input type="password" id="password" class="login-input" placeholder="验证码" required>
         </form>
-        <input type="submit" value="登录" class="login-submit-button">
-        <a href="#" class="login-change-text" @click="sendMessage()">账号密码登录</a>
-        <a href="#" class="login-register-text" @click="registerMessage()">没有账号？马上注册</a>
+        <input type="submit" value="创建账号" class="login-submit-button">
     </div>
 </template>
 
@@ -66,7 +70,7 @@ html,
 }
 
 .login-text {
-    margin-top: 14vh;
+    margin-top: 7vh;
     color: var(--text-clr);
     font-size: 50px;
     align-self: center;
@@ -79,7 +83,7 @@ html,
     width: 20vw;
     font-size: 20px;
     color: var(--text-clr);
-    margin-top: 6vh;
+    margin-top: 4vh;
     background-color: transparent;
     border: none;
     border-bottom: 1px var(--line-clr) solid;
@@ -93,7 +97,7 @@ html,
     width: 14vw;
     font-size: 20px;
     color: var(--text-clr);
-    margin-top: 6vh;
+    margin-top: 4vh;
     background-color: transparent;
     border: none;
     border-bottom: 1px var(--line-clr) solid;
@@ -122,16 +126,6 @@ html,
 
 .login-change-text:hover {
     color: var(--text-clr);
-}
-
-.login-send-code {
-    margin-left: 1vw;
-    border: none;
-    border-radius: 5px;
-    color: var(--text-clr);
-    background-color: var(--accent-clr);
-    height: 4vh;
-    width: 5vw;
 }
 
 .login-register-text {

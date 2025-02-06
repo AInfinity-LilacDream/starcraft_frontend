@@ -6,18 +6,21 @@
             <br>
             <input type="password" id="password" class="login-input" placeholder="密码" required>
         </form>
-        <input type="submit" value="提交" class="login-submit-button">
-        <a href="#" class="login-change-text" @click = "sendMessage()">验证码登录</a>
+        <input type="submit" value="登录" class="login-submit-button">
+        <a href="#" class="login-change-text" @click="sendMessage()">验证码登录</a>
+        <a href="#" class="login-register-text" @click="registerMessage()">没有账号？马上注册</a>
     </div>
 </template>
 
 <script setup>
-import { defineEmits } from 'vue';
-
-const emit = defineEmits(['changeMode']);
+const emit = defineEmits(['changeMode', 'jumpToRegisterPage']);
 
 function sendMessage() {
     emit('changeMode');
+}
+
+function registerMessage() {
+    emit('jumpToRegisterPage');
 }
 </script>
 
@@ -101,7 +104,21 @@ html,
     margin-top: 4vh;
     transition: color 0.1s ease;
 }
+
 .login-change-text:hover {
+    color: var(--text-clr);
+}
+
+.login-register-text {
+    position: absolute;
+    bottom: 4vh;
+    right: 3vw;
+    text-decoration: none;
+    color: var(--accent-clr);
+    transition: color 0.1s ease;
+}
+
+.login-register-text:hover {
     color: var(--text-clr);
 }
 </style>
