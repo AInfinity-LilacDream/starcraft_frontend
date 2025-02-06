@@ -74,16 +74,6 @@
                         <span>外挂图鉴</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" @click="switchPage" :ref="el => tile[10] = el" id = "10">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                            fill="#e8eaed">
-                            <path
-                                d="M160-40v-240h100v-80H160v-240h100v-80H160v-240h280v240H340v80h100v80h120v-80h280v240H560v-80H440v80H340v80h100v240H160Zm80-80h120v-80H240v80Zm0-320h120v-80H240v80Zm400 0h120v-80H640v80ZM240-760h120v-80H240v80Zm60-40Zm0 320Zm400 0ZM300-160Z" />
-                        </svg>
-                        <span>比赛信息</span>
-                    </a>
-                </li>
             </ul>
         </aside>
         <main>
@@ -132,7 +122,7 @@ function switchPage(event) {
         return;
     }
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 9; i++) {
         tile.value[i].classList.remove('active');
     }
 

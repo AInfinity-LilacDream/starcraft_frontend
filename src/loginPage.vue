@@ -1,87 +1,109 @@
 <template>
-  <div class = "container">
-    <div class = "input-container">
-      <div style = "height: 6vh;"></div>
-      <div class = "title">PCEC.club</div>
-      <div style = "height: 6vh;"></div>
-      <AnimatedInput hint-text="账号" />
-      <div style = "height: 3vh;"></div>
-      <AnimatedInput hint-text="密码" />
-      <div style = "height: 3vh;"></div>
-      <AnimatedButton hintText="登录" @click = "login" />
-      <div style = "height: 5vh;"></div>
-      <div class = "divider"></div>
-      <div class = "footer-container">
-        <div class = "footer-font-left">忘记密码？</div>
-        <div class = "footer-font-right">注册账号</div>
-      </div>
+  <div class="login-large-container">
+    <div class="login-container">
+      <div class="login-png-container"></div>
+      <transition name="slide-fade" mode="out-in">
+        <component :is="currentComponent" @changeMode="changeMode"></component>
+      </transition>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
+import { shallowRef } from 'vue';
 
-import AnimatedButton from './components/AnimatedButton.vue';
-import AnimatedInput from './components/AnimatedInput.vue';
+import LoginUserName from './components/LoginUserName.vue';
+import LoginUserPhone from './components/LoginUserPhone.vue';
 
-const router = useRouter();
+const currentComponent = shallowRef(LoginUserName);
 
-function login() {
-  router.push('/homePage');
+function changeMode() {
+  currentComponent.value = currentComponent.value === LoginUserName ? LoginUserPhone : LoginUserName;
 }
 
 </script>
 
-<style scoped>
-  .divider {
-    width: 35vw;
-    height: 0.1vh;
-    background-color: rgba(76, 76, 76, 0.4);
-    margin: auto;
-  }
+<style>
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
 
-  .footer-container {
-    font-size: 15px;
-    position: relative;
-    margin: auto;
-    height: 10vh;
-    width: 30vw;
-    color: white;
-    display: flex;
-  }
+body,
+html,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
 
-  .footer-font-left {
-    position: absolute;
-    left: 0px;
-    top: calc(50% - 10px);
-  }
+:root {
+  --base-clr: #11121a;
+  --line-clr: #42434a;
+  --hover-clr: #222533;
+  --text-clr: #e6e6ef;
+  --accent-clr: #5e63ff;
+  --secondary-text-clr: #b0b3c1;
+}
 
-  .footer-font-right {
-    position: absolute;
-    right: 0px;
-    top: calc(50% - 10px);
-  }
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+}
 
-  .title {
-    text-align: center;
-    color: white;
-    font-size: 30px;
-  }
+.login-large-container {
+  border-radius: 0;
+  box-sizing: border-box;
+  background-color: plum;
+  height: 100%;
+  width: 100%;
+}
 
-  .container {
-    height: 100vh;
-    width: 100vw;
-    background: linear-gradient(45deg, #4568DC, #B06AB3);
-  }
+.login-container {
+  overflow: hidden;
+  display: flex;
+  position: absolute;
+  top: calc(50% - 37.5vh);
+  left: calc(50% - 37.5vw);
+  height: 75vh;
+  width: 75vw;
+  box-sizing: border-box;
+  background-color: var(--base-clr);
+  border-radius: 40px;
+}
 
-  .input-container {
-    box-shadow: 0 0 80px 10px #2b2e4a;
-    position: absolute;
-    top: calc(50% - 40vh);
-    left: calc(50% - 20vw);
-    background: #2b2e4a;
-    height: 80vh;
-    width: 40vw;
-  }
+.login-png-container {
+  height: 100%;
+  width: 50%;
+  background: url("./assets/pics/login-cover.jpg") no-repeat -290px;
+  background-size: cover;
+  border-radius: 40px;
+}
+
+.slide-fade-enter-active {
+  transition: transform 0.2s ease-in-out, opacity 0.05s ease-in 0.1s;
+}
+
+.slide-fade-leave-active {
+  transition: transform 0.2s ease-in-out, opacity 0.1s ease-out;
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateX(50%);
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.slide-fade-enter-to, .slide-fade-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
 </style>
