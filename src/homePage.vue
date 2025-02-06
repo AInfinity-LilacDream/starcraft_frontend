@@ -13,7 +13,7 @@
                     </button>
                 </li>
                 <li>
-                    <button @click="toggleSubMenu" class="dropdown-btn active" :ref="el => tile[1] = el" id = "1">
+                    <button @click="toggleSubMenu" class="dropdown-btn active" :ref="el => tile[1] = el" id="1">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e8eaed">
                             <path
@@ -27,12 +27,13 @@
                     </button>
                     <ul class="sub-menu">
                         <div>
-                            <li><a href="#" @click="switchPage" :ref="el => tile[2] = el" id = "2" class = "active ">1v1</a></li>
-                            <li><a href="#" @click="switchPage" :ref="el => tile[3] = el" id = "3">2v2</a></li>
-                            <li><a href="#" @click="switchPage" :ref="el => tile[4] = el" id = "4">3v3</a></li>
-                            <li><a href="#" @click="switchPage" :ref="el => tile[5] = el" id = "5">4v4</a></li>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[2] = el" id="2" class="active ">1v1</a>
+                            </li>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[3] = el" id="3">2v2</a></li>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[4] = el" id="4">3v3</a></li>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[5] = el" id="5">4v4</a></li>
                             <li>
-                                <a href="#" @click="switchPage" :ref="el => tile[6] = el" id = "6">
+                                <a href="#" @click="switchPage" :ref="el => tile[6] = el" id="6">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                         width="24px" fill="#e8eaed">
                                         <path
@@ -45,7 +46,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" @click="switchPage" :ref="el => tile[7] = el" id = "7">
+                    <a href="#" @click="switchPage" :ref="el => tile[7] = el" id="7">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e8eaed">
                             <path
@@ -55,7 +56,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" @click="switchPage" :ref="el => tile[8] = el" id = "8">
+                    <a href="#" @click="switchPage" :ref="el => tile[8] = el" id="8">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e8eaed">
                             <path
@@ -65,7 +66,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" @click="switchPage" :ref="el => tile[9] = el" id = "9">
+                    <a href="#" @click="switchPage" :ref="el => tile[9] = el" id="9">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e8eaed">
                             <path
@@ -74,11 +75,18 @@
                         <span>外挂图鉴</span>
                     </a>
                 </li>
+                <li id="profile-image">
+                    <a href="#" @click="switchPage" :ref="el => tile[10] = el" id="10">
+                        <div class="profile-image"></div>
+                        <span>个人信息</span>
+                    </a>
+                </li>
             </ul>
         </aside>
         <main>
-            <findMatch v-if = "id >= 2 && id <= 5" :mode = "`${id - 1}v${id - 1}`"></findMatch>
-            <matchInfo v-if = "id == 7"></matchInfo>
+            <findMatch v-if="id >= 2 && id <= 5" :mode="`${id - 1}v${id - 1}`"></findMatch>
+            <matchInfo v-if="id == 7"></matchInfo>
+
         </main>
     </div>
 </template>
@@ -109,6 +117,8 @@ function toggleSubMenu(event) {
 
 function toggleSidebar() {
     sidebar.value.classList.toggle('close')
+    if (sidebar.value.classList.contains('close')) document.documentElement.style.setProperty('--sidebar-width', '50px')
+    else document.documentElement.style.setProperty('--sidebar-width', '218px')
     sidebarBtn.value.classList.toggle('rotate')
 
     Array.from(sidebar.value.getElementsByClassName('show')).forEach(ul => {
@@ -140,6 +150,8 @@ function switchPage(event) {
     --text-clr: #e6e6ef;
     --accent-clr: #5e63ff;
     --secondary-text-clr: #b0b3c1;
+
+    --sidebar-width: calc(250px - 2em);
 }
 
 * {
@@ -194,6 +206,7 @@ main p {
     overflow: hidden;
     text-wrap: nowrap;
 }
+
 #sidebar * {
     transition: color 100ms ease-in-out, background-color 100ms ease-in-out, fill 100ms ease-in-out;
 }
@@ -206,6 +219,7 @@ main p {
 .active {
     color: var(--accent-clr) !important;
 }
+
 .active svg {
     fill: var(--accent-clr) !important;
 }
@@ -304,4 +318,18 @@ main p {
     background-color: var(--hover-clr);
 }
 
+.profile-image {
+    flex-shrink: 0;
+    height: 24px;
+    width: 24px;
+    background-image: url('./assets/pics/profile-image.png');
+    background-size: cover;
+    border-radius: 50%;
+}
+
+#profile-image {
+    width: var(--sidebar-width);
+    position: absolute;
+    bottom: 24px;
+}
 </style>
