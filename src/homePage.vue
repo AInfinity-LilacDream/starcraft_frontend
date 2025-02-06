@@ -86,7 +86,7 @@
         <main>
             <findMatch v-if="id >= 2 && id <= 5" :mode="`${id - 1}v${id - 1}`"></findMatch>
             <matchInfo v-if="id == 7"></matchInfo>
-
+            <Profile v-if="id == 10"></Profile>
         </main>
     </div>
 </template>
@@ -95,6 +95,7 @@
 import { onMounted, ref } from 'vue';
 import findMatch from './components/FindMatch.vue';
 import matchInfo from './components/MatchInfoPublicity.vue';
+import Profile from './components/Profile.vue';
 
 let currentPage = 2;
 
@@ -132,7 +133,7 @@ function switchPage(event) {
         return;
     }
 
-    for (let i = 1; i <= 9; i++) {
+    for (let i = 1; i <= 10; i++) {
         tile.value[i].classList.remove('active');
     }
 
