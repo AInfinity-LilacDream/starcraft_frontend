@@ -58,7 +58,7 @@ html,
 .login-large-container {
   border-radius: 0;
   box-sizing: border-box;
-  background-color: plum;
+  background: linear-gradient(to right, #1D4350, #A43931);
   height: 100%;
   width: 100%;
 }

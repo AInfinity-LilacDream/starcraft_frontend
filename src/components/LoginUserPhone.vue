@@ -2,7 +2,8 @@
     <div class="login-form">
         <span class="login-text">登录</span>
         <form method="post">
-            <input type="text" id="name" class="login-input" placeholder="手机号" required>
+            <input type="text" id="name" class="login-input-2" placeholder="手机号" required>
+            <button class = "login-send-code">发送</button>
             <br>
             <input type="password" id="password" class="login-input" placeholder="验证码" required>
         </form>
@@ -80,6 +81,20 @@ html,
     height: 3vh;
 }
 
+.login-input-2 {
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 14vw;
+    font-size: 20px;
+    color: var(--text-clr);
+    margin-top: 6vh;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px var(--line-clr) solid;
+    height: 3vh;
+}
+
 .login-submit-button {
     margin-top: 6vh;
     width: 20vw;
@@ -101,5 +116,15 @@ html,
 }
 .login-change-text:hover {
     color: var(--text-clr);
+}
+
+.login-send-code {
+    margin-left: 1vw;
+    border: none;
+    border-radius: 5px;
+    color: var(--text-clr);
+    background-color: var(--accent-clr);
+    height: 4vh;
+    width: 5vw;
 }
 </style>
