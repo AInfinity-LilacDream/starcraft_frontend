@@ -78,11 +78,16 @@ html,
     width: 20vw;
     font-size: 20px;
     color: var(--text-clr);
-    margin-top: 6vh;
+    margin-top: 4vh;
     background-color: transparent;
     border: none;
     border-bottom: 1px var(--line-clr) solid;
     height: 3vh;
+    transition: border-bottom 0.2s ease;
+}
+.login-input:focus {
+    border: none;
+    border-bottom: 1px var(--accent-clr) solid;
 }
 
 .login-submit-button {

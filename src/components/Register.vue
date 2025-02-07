@@ -88,6 +88,11 @@ html,
     border: none;
     border-bottom: 1px var(--line-clr) solid;
     height: 3vh;
+    transition: border-bottom 0.2s ease;
+}
+.login-input:focus {
+    border: none;
+    border-bottom: 1px var(--accent-clr) solid;
 }
 
 .login-input-2 {
@@ -102,6 +107,11 @@ html,
     border: none;
     border-bottom: 1px var(--line-clr) solid;
     height: 3vh;
+    transition: border-bottom 0.2s ease;
+}
+.login-input-2:focus {
+    border: none;
+    border-bottom: 1px var(--accent-clr) solid;
 }
 
 .login-submit-button {
