@@ -1,23 +1,26 @@
 <template>
-    <div class="login-form">
-        <span class="login-text">注册</span>
+    <div class="register-form">
+        <span class="register-text">注册</span>
         <form method="post">
-            <input type="text" id="name" class="login-input" placeholder="用户名" required>
+            <input type="text" id="name" class="register-input" placeholder="用户名" required>
             <br>
-            <input type="password" id="password" class="login-input" placeholder="密码" required>
+            <input type="password" id="password" class="register-input" placeholder="密码" required>
             <br>
-            <input type="password" id="confirmPassword" class="login-input" placeholder="确认密码" required>
+            <input type="password" id="confirmPassword" class="register-input" placeholder="确认密码" required>
             <br>
-            <input type="text" id="name" class="login-input-2" placeholder="手机号" required>
-            <button class="login-send-code">发送</button>
+            <input type="text" id="phone" class="register-input-2" placeholder="手机号" required>
+            <button class="register-send-code">发送</button>
             <br>
-            <input type="password" id="password" class="login-input" placeholder="验证码" required>
+            <input type="password" id="authCode" class="register-input" placeholder="验证码" required>
         </form>
-        <input type="submit" value="创建账号" class="login-submit-button">
+        <input type="submit" value="创建账号" class="register-submit-button">
+        <a href="#" class="register-register-text" @click="jumpToLoginPage()">已有账号？即刻登录</a>
     </div>
 </template>
 
 <script setup>
+import router from '@/router/router';
+
 const emit = defineEmits(['changeMode', 'jumpToRegisterPage']);
 
 function sendMessage() {
@@ -26,6 +29,10 @@ function sendMessage() {
 
 function registerMessage() {
     emit('jumpToRegisterPage');
+}
+
+function jumpToLoginPage() {
+    router.push({ name: 'loginPage' });
 }
 </script>
 
@@ -61,7 +68,7 @@ html,
     line-height: 1.5em;
 }
 
-.login-form {
+.register-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,14 +76,14 @@ html,
     width: 50%;
 }
 
-.login-text {
-    margin-top: 7vh;
+.register-text {
+    margin-top: 5vh;
     color: var(--text-clr);
     font-size: 50px;
     align-self: center;
 }
 
-.login-input {
+.register-input {
     box-sizing: border-box;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -90,12 +97,12 @@ html,
     height: 3vh;
     transition: border-bottom 0.2s ease;
 }
-.login-input:focus {
+.register-input:focus {
     border: none;
     border-bottom: 1px var(--accent-clr) solid;
 }
 
-.login-input-2 {
+.register-input-2 {
     box-sizing: border-box;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -109,13 +116,23 @@ html,
     height: 3vh;
     transition: border-bottom 0.2s ease;
 }
-.login-input-2:focus {
+.register-input-2:focus {
     border: none;
     border-bottom: 1px var(--accent-clr) solid;
 }
 
-.login-submit-button {
-    margin-top: 6vh;
+.register-send-code {
+    margin-left: 1vw;
+    border: none;
+    border-radius: 5px;
+    color: var(--text-clr);
+    background-color: var(--accent-clr);
+    height: 4vh;
+    width: 5vw;
+}
+
+.register-submit-button {
+    margin-top: 4vh;
     width: 20vw;
     height: 5vh;
     display: flex;
@@ -127,27 +144,25 @@ html,
     border-radius: 8px;
 }
 
-.login-change-text {
+.register-change-text {
     text-decoration: none;
     color: var(--accent-clr);
     margin-top: 4vh;
     transition: color 0.1s ease;
 }
 
-.login-change-text:hover {
+.register-change-text:hover {
     color: var(--text-clr);
 }
 
-.login-register-text {
-    position: absolute;
-    bottom: 4vh;
-    right: 3vw;
+.register-register-text {
+    margin-top: 3vh;
     text-decoration: none;
     color: var(--accent-clr);
     transition: color 0.1s ease;
 }
 
-.login-register-text:hover {
+.register-register-text:hover {
     color: var(--text-clr);
 }
 </style>

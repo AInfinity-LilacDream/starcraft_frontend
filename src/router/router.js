@@ -5,9 +5,14 @@ import registerPage from '@/registerPage.vue';
 
 const routes = [
     {
-        path: '/',
+        path: '/loginPage',
         name: 'loginPage',
         component: loginPage
+    },
+    {
+        path: '/',
+        name: 'homePage',
+        component: homePage
     },
     {
         path: '/homePage',

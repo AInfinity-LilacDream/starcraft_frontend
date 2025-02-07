@@ -5,16 +5,16 @@
             <input type="text" id="name" class="login-input-2" placeholder="手机号" required>
             <button class="login-send-code">发送</button>
             <br>
-            <input type="password" id="password" class="login-input" placeholder="验证码" required>
+            <input type="password" id="authCode" class="login-input" placeholder="验证码" required>
         </form>
-        <input type="submit" value="登录" class="login-submit-button">
+        <input type="submit" value="登录" class="login-submit-button" @click="userLogin()">
         <a href="#" class="login-change-text" @click="sendMessage()">账号密码登录</a>
         <a href="#" class="login-register-text" @click="registerMessage()">没有账号？马上注册</a>
     </div>
 </template>
 
 <script setup>
-const emit = defineEmits(['changeMode', 'jumpToRegisterPage']);
+const emit = defineEmits(['changeMode', 'jumpToRegisterPage', 'userLogin']);
 
 function sendMessage() {
     emit('changeMode');
@@ -22,6 +22,10 @@ function sendMessage() {
 
 function registerMessage() {
     emit('jumpToRegisterPage');
+}
+
+function userLogin() {
+    emit('userLogin');
 }
 </script>
 

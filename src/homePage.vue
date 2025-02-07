@@ -70,10 +70,16 @@
                         <span>外挂图鉴</span>
                     </a>
                 </li>
-                <li id="profile-image">
+                <li id="profile-image" v-show="isLogin == true">
                     <a href="#" @click="switchPage" :ref="el => tile[10] = el" id="10">
                         <div class="profile-image"></div>
                         <span>个人信息</span>
+                    </a>
+                </li>
+                <li id="profile-image" v-show="isLogin == false">
+                    <a href="#" @click="jumpToLoginPage">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-120v-80h280v-560H480v-80h280q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H480Zm-80-160-55-58 102-102H120v-80h327L345-622l55-58 200 200-200 200Z"/></svg>
+                        <span>登入</span>
                     </a>
                 </li>
             </ul>
@@ -93,12 +99,14 @@ import findMatch from './components/FindMatch.vue';
 import matchInfo from './components/MatchInfoPublicity.vue';
 import Profile from './components/Profile.vue';
 import ProfileEdit from './components/ProfileEdit.vue';
+import router from './router/router';
 
 let currentPage = 2;
 
 const sidebarBtn = ref(null);
 const sidebar = ref(null);
 const profileEditMode = ref(false);
+const isLogin = ref(false);
 
 const tile = ref([]);
 
@@ -143,6 +151,10 @@ function switchPage(event) {
 
 function jumpToProfileEditPage() {
     profileEditMode.value = true;
+}
+
+function jumpToLoginPage() {
+    router.push({ name: 'loginPage' });
 }
 </script>
 

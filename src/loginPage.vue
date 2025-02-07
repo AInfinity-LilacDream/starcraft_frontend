@@ -3,22 +3,20 @@
     <div class="login-container">
       <div class="login-png-container"></div>
       <transition name="slide-fade" mode="out-in">
-        <component :is="currentComponent" @changeMode="changeMode" @jumpToRegisterPage="jumpToRegisterPage"></component>
+        <component :is="currentComponent" @changeMode="changeMode" @jumpToRegisterPage="jumpToRegisterPage" @userLogin="userLogin"></component>
       </transition>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
 import { shallowRef } from 'vue';
 
 import LoginUserName from './components/LoginUserName.vue';
 import LoginUserPhone from './components/LoginUserPhone.vue';
+import router from './router/router';
 
 const currentComponent = shallowRef(LoginUserName);
-
-const router = useRouter();
 
 function changeMode() {
   currentComponent.value = currentComponent.value === LoginUserName ? LoginUserPhone : LoginUserName;
@@ -28,6 +26,9 @@ function jumpToRegisterPage() {
   router.push({ name: 'registerPage' });
 }
 
+function userLogin() {
+  router.push({ name: 'homePage' });
+}
 </script>
 
 <style>
