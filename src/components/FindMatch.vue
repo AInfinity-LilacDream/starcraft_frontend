@@ -26,7 +26,7 @@
                     <div class="class-text">星灵</div>
                 </div>
                 <div class="class-selection">
-                    <img src="../assets/icons/human.png">
+                    <div class="class-random"></div>
                     <div class="class-text">随机</div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <div class="class-text">星灵</div>
                 </div>
                 <div class="class-selection-2">
-                    <img src="../assets/icons/human.png">
+                    <div class="class-random"></div>
                     <div class="class-text">随机</div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
             </svg>
         </div>
         <div style="width: 30px;"></div>
-        <span class = "match-text">{{ mode }}</span>
+        <span class="match-text">{{ mode }}</span>
     </div>
 </template>
 
@@ -117,7 +117,7 @@ onMounted(() => {
 }
 
 .match-text {
-    font-size: 25px;   
+    font-size: 25px;
 }
 
 .top-container {
@@ -220,5 +220,14 @@ onMounted(() => {
     svg {
         fill: #11121a;
     }
+}
+
+.class-random {
+    height: 164px;
+    width: 118px;
+    background-image: url('../assets/icons/random.png');
+    background-size: contain;
+    background-position: 0;
+    background-repeat: no-repeat;
 }
 </style>
