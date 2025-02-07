@@ -27,7 +27,7 @@
                     </button>
                     <ul class="sub-menu">
                         <div>
-                            <li><a href="#" @click="switchPage" :ref="el => tile[2] = el" id="2" class="active ">1v1</a>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[2] = el" id="2" class="active">1v1</a>
                             </li>
                             <li><a href="#" @click="switchPage" :ref="el => tile[3] = el" id="3">2v2</a></li>
                             <li><a href="#" @click="switchPage" :ref="el => tile[4] = el" id="4">3v3</a></li>
@@ -61,17 +61,28 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" @click="switchPage" :ref="el => tile[9] = el" id="9">
+                    <button @click="toggleSubMenu" class="dropdown-btn" :ref="el => tile[9] = el" id="9">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#e8eaed">
                             <path
                                 d="M400-400h160v-80H400v80Zm0-120h320v-80H400v80Zm0-120h320v-80H400v80Zm-80 400q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
                         </svg>
                         <span>外挂图鉴</span>
-                    </a>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e8eaed">
+                            <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                        </svg>
+                    </button>
+                    <ul class="sub-menu">
+                        <div>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[10] = el" id="10">登记外挂</a>
+                            </li>
+                            <li><a href="#" @click="switchPage" :ref="el => tile[11] = el" id="11">外挂图鉴</a></li>
+                        </div>
+                    </ul>
                 </li>
                 <li id="profile-image" v-show="isLogin == true">
-                    <a href="#" @click="switchPage" :ref="el => tile[10] = el" id="10">
+                    <a href="#" @click="switchPage" :ref="el => tile[12] = el" id="12">
                         <div class="profile-image"></div>
                         <span>个人信息</span>
                     </a>
@@ -87,7 +98,7 @@
         <main>
             <findMatch v-if="id >= 2 && id <= 5 && !profileEditMode" :mode="`${id - 1}v${id - 1}`"></findMatch>
             <matchInfo v-if="id == 7 && !profileEditMode"></matchInfo>
-            <Profile v-if="id == 10 && !profileEditMode" @jumpToProfileEditPage="jumpToProfileEditPage"></Profile>
+            <Profile v-if="id == 12 && !profileEditMode" @jumpToProfileEditPage="jumpToProfileEditPage"></Profile>
             <ProfileEdit v-if="profileEditMode"></ProfileEdit>
         </main>
     </div>
@@ -106,7 +117,7 @@ let currentPage = 2;
 const sidebarBtn = ref(null);
 const sidebar = ref(null);
 const profileEditMode = ref(false);
-const isLogin = ref(false);
+const isLogin = ref(true);
 
 const tile = ref([]);
 
@@ -140,13 +151,14 @@ function switchPage(event) {
     }
 
     profileEditMode.value = false;
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 12; i++) {
         tile.value[i].classList.remove('active');
     }
 
     id = parseInt(event.currentTarget.id);
     tile.value[id].classList.toggle('active');
     if (id >= 2 && id <= 6) tile.value[1].classList.toggle('active');
+    if (id >= 10 && id <= 11) tile.value[9].classList.toggle('active');
 }
 
 function jumpToProfileEditPage() {
