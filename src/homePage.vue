@@ -84,23 +84,26 @@
             </ul>
         </aside>
         <main>
-            <findMatch v-if="id >= 2 && id <= 5" :mode="`${id - 1}v${id - 1}`"></findMatch>
-            <matchInfo v-if="id == 7"></matchInfo>
-            <Profile v-if="id == 10"></Profile>
+            <findMatch v-if="id >= 2 && id <= 5 && !profileEditMode" :mode="`${id - 1}v${id - 1}`"></findMatch>
+            <matchInfo v-if="id == 7 && !profileEditMode"></matchInfo>
+            <Profile v-if="id == 10 && !profileEditMode" @jumpToProfileEditPage="jumpToProfileEditPage"></Profile>
+            <ProfileEdit v-if="profileEditMode"></ProfileEdit>
         </main>
     </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import findMatch from './components/FindMatch.vue';
 import matchInfo from './components/MatchInfoPublicity.vue';
 import Profile from './components/Profile.vue';
+import ProfileEdit from './components/ProfileEdit.vue';
 
 let currentPage = 2;
 
 const sidebarBtn = ref(null);
 const sidebar = ref(null);
+const profileEditMode = ref(false);
 
 const tile = ref([]);
 
@@ -133,6 +136,7 @@ function switchPage(event) {
         return;
     }
 
+    profileEditMode.value = false;
     for (let i = 1; i <= 10; i++) {
         tile.value[i].classList.remove('active');
     }
@@ -140,6 +144,10 @@ function switchPage(event) {
     id = parseInt(event.currentTarget.id);
     tile.value[id].classList.toggle('active');
     if (id >= 2 && id <= 6) tile.value[1].classList.toggle('active');
+}
+
+function jumpToProfileEditPage() {
+    profileEditMode.value = true;
 }
 </script>
 
