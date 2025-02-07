@@ -1,12 +1,24 @@
 <template>
     <div class="profile-edit-container">
-        <form>
-            <input class="profile-edit-input">
+        <div class = "profile-edit-picture" @click = "selectProfilePicture">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h405l-60 60H180v600h600v-348l60-60v408q0 24-18 42t-42 18H180Zm300-360ZM360-360v-170l382-382q9-9 20-13t22-4q11 0 22.32 4.5Q817.63-920 827-911l83 84q8.61 8.96 13.3 19.78 4.7 10.83 4.7 22.02 0 11.2-4.5 22.7T910-742L530-360H360Zm508-425-84-84 84 84ZM420-420h85l253-253-43-42-43-42-252 251v86Zm295-295-43-42 43 42 43 42-43-42Z"/></svg>
+            <div class = "profile-edit-picture-mask"></div>
+        </div>
+        <form class = "profile-edit-form">
+            <input type = "text" placeholder = "昵称" class = "profile-edit-input">
+            <input type = "text" placeholder = "QQ" class = "profile-edit-input">
+            <input type = "text" placeholder = "MMR" class = "profile-edit-input">
+            <input type = "text" placeholder = "种族" class = "profile-edit-input">
         </form>
+        <input type="submit" value="保存修改" class="profile-edit-submit-button">
     </div>
 </template>
 
 <script setup>
+function selectProfilePicture() {
+    
+}
+
 </script>
 
 <style>
@@ -53,10 +65,82 @@ html,
     border: none;
     border-bottom: 1px var(--line-clr) solid;
     height: 3vh;
+    transition: border-bottom 0.2s ease;
+}
+.profile-edit-input:focus {
+    border: none;
+    border-bottom: 1px var(--accent-clr) solid;
 }
 
 .profile-edit-container {
+    box-sizing: border-box;
+    padding: 50px;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-edit-picture {
+    position: relative;
+    height: 30vh;
+    width: 30vh;
+    border-radius: 50%;
+    background-image: url('../assets/pics/profile-image.png');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 0.2s ease;
+    
+    svg {
+        fill: var(--text-clr);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        z-index: 2;
+        pointer-events: none;
+    }
+}
+.profile-edit-picture:hover {
+    svg {
+        opacity: 1;
+    }
+}
+
+.profile-edit-picture-mask {
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    opacity: 0;
+    transition: 0.2s ease;
+}
+.profile-edit-picture-mask:hover {
+    opacity: 1;
+}
+
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+}
+
+.profile-edit-submit-button {
+    margin-top: 8vh;
+    width: 20vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-clr);
+    border: none;
+    color: var(--text-clr);
+    border-radius: 8px;
 }
 </style>
