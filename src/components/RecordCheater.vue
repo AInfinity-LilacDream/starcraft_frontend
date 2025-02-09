@@ -33,10 +33,11 @@
                 <span class="record-cheater-text">建造列表</span>
             </div>
             <div class="record-cheater-option">
-                <span class = "record-cheater-text">其他</span><input class="record-cheater-input-2" type="text" placeholder="请详细描述外挂行为...">
+                <span class="record-cheater-text">其他</span><input class="record-cheater-input-2" type="text"
+                    placeholder="请详细描述外挂行为...">
             </div>
         </form>
-        <div class = "record-cheater-submit-button">递交！我们将会核验并记录违规行为</div>
+        <div class="record-cheater-submit-button">递交！我们将会核验并记录违规行为</div>
     </div>
 </template>
 
@@ -98,6 +99,7 @@ function selectCheatMode(el) {
     height: 3vh;
     transition: border-bottom 0.2s ease;
 }
+
 .record-cheater-input:focus {
     border: none;
     border-bottom: 1px var(--accent-clr) solid;
@@ -116,6 +118,7 @@ function selectCheatMode(el) {
     transition: border-bottom 0.2s ease;
     padding-bottom: 3px;
 }
+
 .record-cheater-input-2:focus {
     border: none;
     border-bottom: 1px var(--accent-clr) solid;
