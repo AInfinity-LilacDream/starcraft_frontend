@@ -37,12 +37,14 @@
                     placeholder="请详细描述外挂行为...">
             </div>
         </form>
-        <div class="record-cheater-submit-button">递交！我们将会核验并记录违规行为</div>
+        <wSubmitButton text="递交！我们将会核验并记录违规行为" fontSize="14px"></wSubmitButton>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+
+import wSubmitButton from './widgets/wSubmitButton.vue';
 
 const option1 = ref(false);
 const option2 = ref(false);
@@ -151,19 +153,5 @@ function selectCheatMode(el) {
     svg {
         fill: var(--accent-clr);
     }
-}
-
-.record-cheater-submit-button {
-    margin-top: 6vh;
-    width: 20vw;
-    height: 5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    background-color: var(--accent-clr);
-    border: none;
-    color: var(--text-clr);
-    border-radius: 8px;
 }
 </style>

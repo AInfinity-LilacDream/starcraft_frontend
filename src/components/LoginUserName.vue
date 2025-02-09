@@ -6,13 +6,15 @@
             <br>
             <input type="password" id="password" class="login-input" placeholder="密码" required>
         </form>
-        <input type="submit" value="登录" class="login-submit-button" @click="userLogin()">
+        <wSubmitButton text="登录" @click="userLogin"></wSubmitButton>
         <a href="#" class="login-change-text" @click="sendMessage()">验证码登录</a>
         <a href="#" class="login-register-text" @click="registerMessage()">没有账号？马上注册</a>
     </div>
 </template>
 
 <script setup>
+import wSubmitButton from './widgets/wSubmitButton.vue';
+
 const emit = defineEmits(['changeMode', 'jumpToRegisterPage', 'userLogin']);
 
 function sendMessage() {
@@ -89,22 +91,10 @@ html,
     height: 3vh;
     transition: border-bottom 0.2s ease;
 }
+
 .login-input:focus {
     border: none;
     border-bottom: 1px var(--accent-clr) solid;
-}
-
-.login-submit-button {
-    margin-top: 6vh;
-    width: 20vw;
-    height: 5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--accent-clr);
-    border: none;
-    color: var(--text-clr);
-    border-radius: 8px;
 }
 
 .login-change-text {

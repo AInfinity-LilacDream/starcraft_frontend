@@ -1,22 +1,27 @@
 <template>
     <div class="profile-edit-container">
-        <div class = "profile-edit-picture" @click = "selectProfilePicture">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h405l-60 60H180v600h600v-348l60-60v408q0 24-18 42t-42 18H180Zm300-360ZM360-360v-170l382-382q9-9 20-13t22-4q11 0 22.32 4.5Q817.63-920 827-911l83 84q8.61 8.96 13.3 19.78 4.7 10.83 4.7 22.02 0 11.2-4.5 22.7T910-742L530-360H360Zm508-425-84-84 84 84ZM420-420h85l253-253-43-42-43-42-252 251v86Zm295-295-43-42 43 42 43 42-43-42Z"/></svg>
-            <div class = "profile-edit-picture-mask"></div>
+        <div class="profile-edit-picture" @click="selectProfilePicture">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
+                <path
+                    d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h405l-60 60H180v600h600v-348l60-60v408q0 24-18 42t-42 18H180Zm300-360ZM360-360v-170l382-382q9-9 20-13t22-4q11 0 22.32 4.5Q817.63-920 827-911l83 84q8.61 8.96 13.3 19.78 4.7 10.83 4.7 22.02 0 11.2-4.5 22.7T910-742L530-360H360Zm508-425-84-84 84 84ZM420-420h85l253-253-43-42-43-42-252 251v86Zm295-295-43-42 43 42 43 42-43-42Z" />
+            </svg>
+            <div class="profile-edit-picture-mask"></div>
         </div>
-        <form class = "profile-edit-form">
-            <input type = "text" placeholder = "昵称" class = "profile-edit-input">
-            <input type = "text" placeholder = "QQ" class = "profile-edit-input">
-            <input type = "text" placeholder = "MMR" class = "profile-edit-input">
-            <input type = "text" placeholder = "种族" class = "profile-edit-input">
+        <form class="profile-edit-form">
+            <input type="text" placeholder="昵称" class="profile-edit-input">
+            <input type="text" placeholder="QQ" class="profile-edit-input">
+            <input type="text" placeholder="MMR" class="profile-edit-input">
+            <input type="text" placeholder="种族" class="profile-edit-input">
         </form>
-        <input type="submit" value="保存修改" class="profile-edit-submit-button">
+        <wSubmitButton text="保存修改"></wSubmitButton>
     </div>
 </template>
 
 <script setup>
+import wSubmitButton from './widgets/wSubmitButton.vue';
+
 function selectProfilePicture() {
-    
+
 }
 
 </script>
@@ -67,6 +72,7 @@ html,
     height: 3vh;
     transition: border-bottom 0.2s ease;
 }
+
 .profile-edit-input:focus {
     border: none;
     border-bottom: 1px var(--accent-clr) solid;
@@ -93,7 +99,7 @@ html,
     align-items: center;
     justify-content: center;
     transition: filter 0.2s ease;
-    
+
     svg {
         fill: var(--text-clr);
         opacity: 0;
@@ -102,6 +108,7 @@ html,
         pointer-events: none;
     }
 }
+
 .profile-edit-picture:hover {
     svg {
         opacity: 1;
@@ -121,6 +128,7 @@ html,
     opacity: 0;
     transition: 0.2s ease;
 }
+
 .profile-edit-picture-mask:hover {
     opacity: 1;
 }
@@ -129,18 +137,5 @@ html,
     display: flex;
     flex-direction: column;
     margin-top: 5vh;
-}
-
-.profile-edit-submit-button {
-    margin-top: 8vh;
-    width: 20vw;
-    height: 5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--accent-clr);
-    border: none;
-    color: var(--text-clr);
-    border-radius: 8px;
 }
 </style>

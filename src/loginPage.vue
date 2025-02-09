@@ -3,7 +3,8 @@
     <div class="login-container">
       <div class="login-png-container"></div>
       <transition name="slide-fade" mode="out-in">
-        <component :is="currentComponent" @changeMode="changeMode" @jumpToRegisterPage="jumpToRegisterPage" @userLogin="userLogin"></component>
+        <component :is="currentComponent" @changeMode="changeMode" @jumpToRegisterPage="jumpToRegisterPage"
+          @userLogin="userLogin"></component>
       </transition>
     </div>
   </div>
@@ -110,7 +111,8 @@ html,
   transform: translateX(-50%);
 }
 
-.slide-fade-enter-to, .slide-fade-leave-from {
+.slide-fade-enter-to,
+.slide-fade-leave-from {
   opacity: 1;
   transform: translateX(0);
 }
