@@ -102,6 +102,7 @@
             <ProfileEdit v-if="profileEditMode"></ProfileEdit>
             <RecordCheater v-if="id == 10 && !profileEditMode"></RecordCheater>
             <CheaterList v-if="id == 11 && !profileEditMode"></CheaterList>
+            <Tutorial v-if="id == 8 && !profileEditMode"></Tutorial>
         </main>
     </div>
 </template>
@@ -116,6 +117,7 @@ import ProfileEdit from './components/ProfileEdit.vue';
 import router from './router/router';
 import RecordCheater from './components/RecordCheater.vue';
 import CheaterList from './components/CheaterList.vue';
+import Tutorial from './components/Tutorial.vue';
 
 let currentPage = 2;
 
