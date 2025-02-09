@@ -2,9 +2,9 @@
     <div class="login-form">
         <span class="login-text">登录</span>
         <form method="post">
-            <input type="text" id="name" class="login-input" placeholder="用户名" required>
+            <input type="text" id="name" class="wInput" placeholder="用户名" required>
             <br>
-            <input type="password" id="password" class="login-input" placeholder="密码" required>
+            <input type="password" id="password" class="wInput" placeholder="密码" required>
         </form>
         <wSubmitButton text="登录" @click="userLogin"></wSubmitButton>
         <wTextButton text="验证码登录" @click="sendMessage" style="margin-top: 4vh;"></wTextButton>
@@ -15,6 +15,8 @@
 <script setup>
 import wSubmitButton from './widgets/wSubmitButton.vue';
 import wTextButton from './widgets/wTextButton.vue';
+
+import '../css/widgets.css';
 
 const emit = defineEmits(['changeMode', 'jumpToRegisterPage', 'userLogin']);
 
@@ -76,26 +78,6 @@ html,
     color: var(--text-clr);
     font-size: 50px;
     align-self: center;
-}
-
-.login-input {
-    box-sizing: border-box;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 20vw;
-    font-size: 20px;
-    color: var(--text-clr);
-    margin-top: 4vh;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px var(--line-clr) solid;
-    height: 3vh;
-    transition: border-bottom 0.2s ease;
-}
-
-.login-input:focus {
-    border: none;
-    border-bottom: 1px var(--accent-clr) solid;
 }
 
 .login-register-text {

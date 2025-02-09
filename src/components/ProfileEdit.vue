@@ -8,10 +8,10 @@
             <div class="profile-edit-picture-mask"></div>
         </div>
         <form class="profile-edit-form">
-            <input type="text" placeholder="昵称" class="profile-edit-input">
-            <input type="text" placeholder="QQ" class="profile-edit-input">
-            <input type="text" placeholder="MMR" class="profile-edit-input">
-            <input type="text" placeholder="种族" class="profile-edit-input">
+            <input type="text" placeholder="昵称" class="wInput">
+            <input type="text" placeholder="QQ" class="wInput">
+            <input type="text" placeholder="MMR" class="wInput">
+            <input type="text" placeholder="种族" class="wInput">
         </form>
         <wSubmitButton text="保存修改"></wSubmitButton>
     </div>
@@ -19,6 +19,8 @@
 
 <script setup>
 import wSubmitButton from './widgets/wSubmitButton.vue';
+
+import '../css/widgets.css';
 
 function selectProfilePicture() {
 
@@ -56,26 +58,6 @@ html,
     margin: 0;
     padding: 0;
     line-height: 1.5em;
-}
-
-.profile-edit-input {
-    box-sizing: border-box;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 20vw;
-    font-size: 20px;
-    color: var(--text-clr);
-    margin-top: 4vh;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px var(--line-clr) solid;
-    height: 3vh;
-    transition: border-bottom 0.2s ease;
-}
-
-.profile-edit-input:focus {
-    border: none;
-    border-bottom: 1px var(--accent-clr) solid;
 }
 
 .profile-edit-container {

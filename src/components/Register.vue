@@ -2,16 +2,16 @@
     <div class="register-form">
         <span class="register-text">注册</span>
         <form method="post">
-            <input type="text" id="name" class="register-input" placeholder="用户名" required>
+            <input type="text" id="name" class="wInput" placeholder="用户名" required>
             <br>
-            <input type="password" id="password" class="register-input" placeholder="密码" required>
+            <input type="password" id="password" class="wInput" placeholder="密码" required>
             <br>
-            <input type="password" id="confirmPassword" class="register-input" placeholder="确认密码" required>
+            <input type="password" id="confirmPassword" class="wInput" placeholder="确认密码" required>
             <br>
-            <input type="text" id="phone" class="register-input-2" placeholder="手机号" required>
+            <input type="text" id="phone" class="wInputSmall" placeholder="手机号" required>
             <button class="register-send-code">发送</button>
             <br>
-            <input type="password" id="authCode" class="register-input" placeholder="验证码" required>
+            <input type="password" id="authCode" class="wInput" placeholder="验证码" required>
         </form>
         <wSubmitButton text="创建账号" style="margin-top: 4vh;"></wSubmitButton>
         <wTextButton text="已有账号？即刻登录" @click="jumpToLoginPage" style="margin-top: 3vh;"></wTextButton>
@@ -23,6 +23,8 @@ import router from '@/router/router';
 
 import wSubmitButton from './widgets/wSubmitButton.vue';
 import wTextButton from './widgets/wTextButton.vue';
+
+import '../css/widgets.css'
 
 const emit = defineEmits(['changeMode', 'jumpToRegisterPage']);
 
@@ -76,46 +78,6 @@ html,
     color: var(--text-clr);
     font-size: 50px;
     align-self: center;
-}
-
-.register-input {
-    box-sizing: border-box;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 20vw;
-    font-size: 20px;
-    color: var(--text-clr);
-    margin-top: 4vh;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px var(--line-clr) solid;
-    height: 3vh;
-    transition: border-bottom 0.2s ease;
-}
-
-.register-input:focus {
-    border: none;
-    border-bottom: 1px var(--accent-clr) solid;
-}
-
-.register-input-2 {
-    box-sizing: border-box;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 14vw;
-    font-size: 20px;
-    color: var(--text-clr);
-    margin-top: 4vh;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px var(--line-clr) solid;
-    height: 3vh;
-    transition: border-bottom 0.2s ease;
-}
-
-.register-input-2:focus {
-    border: none;
-    border-bottom: 1px var(--accent-clr) solid;
 }
 
 .register-send-code {

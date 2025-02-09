@@ -1,0 +1,37 @@
+.wInput {
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 20vw;
+    font-size: 20px;
+    color: var(--text-clr);
+    margin-top: 4vh;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px var(--line-clr) solid;
+    height: 3vh;
+    transition: border-bottom 0.2s ease;
+}
+.wInput:focus {
+    border: none;
+    border-bottom: 1px var(--accent-clr) solid;
+}
+
+.wInputSmall {
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 14vw;
+    font-size: 20px;
+    color: var(--text-clr);
+    margin-top: 4vh;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px var(--line-clr) solid;
+    height: 3vh;
+    transition: border-bottom 0.2s ease;
+}
+.wInputS:-moz-placeholder {
+    border: none;
+    border-bottom: 1px var(--accent-clr) solid;
+}
