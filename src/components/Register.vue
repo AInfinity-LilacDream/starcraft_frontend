@@ -13,23 +13,18 @@
             <br>
             <input type="password" id="authCode" class="register-input" placeholder="验证码" required>
         </form>
-        <input type="submit" value="创建账号" class="register-submit-button">
-        <a href="#" class="register-register-text" @click="jumpToLoginPage()">已有账号？即刻登录</a>
+        <wSubmitButton text="创建账号" style="margin-top: 4vh;"></wSubmitButton>
+        <wTextButton text="已有账号？即刻登录" @click="jumpToLoginPage" style="margin-top: 3vh;"></wTextButton>
     </div>
 </template>
 
 <script setup>
 import router from '@/router/router';
 
+import wSubmitButton from './widgets/wSubmitButton.vue';
+import wTextButton from './widgets/wTextButton.vue';
+
 const emit = defineEmits(['changeMode', 'jumpToRegisterPage']);
-
-function sendMessage() {
-    emit('changeMode');
-}
-
-function registerMessage() {
-    emit('jumpToRegisterPage');
-}
 
 function jumpToLoginPage() {
     router.push({ name: 'loginPage' });
@@ -97,6 +92,7 @@ html,
     height: 3vh;
     transition: border-bottom 0.2s ease;
 }
+
 .register-input:focus {
     border: none;
     border-bottom: 1px var(--accent-clr) solid;
@@ -116,6 +112,7 @@ html,
     height: 3vh;
     transition: border-bottom 0.2s ease;
 }
+
 .register-input-2:focus {
     border: none;
     border-bottom: 1px var(--accent-clr) solid;
@@ -152,17 +149,6 @@ html,
 }
 
 .register-change-text:hover {
-    color: var(--text-clr);
-}
-
-.register-register-text {
-    margin-top: 3vh;
-    text-decoration: none;
-    color: var(--accent-clr);
-    transition: color 0.1s ease;
-}
-
-.register-register-text:hover {
     color: var(--text-clr);
 }
 </style>

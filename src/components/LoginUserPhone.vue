@@ -8,13 +8,14 @@
             <input type="password" id="authCode" class="login-input" placeholder="验证码" required>
         </form>
         <wSubmitButton text="登录" @click="userLogin"></wSubmitButton>
-        <a href="#" class="login-change-text" @click="sendMessage()">账号密码登录</a>
-        <a href="#" class="login-register-text" @click="registerMessage()">没有账号？马上注册</a>
+        <wTextButton text="账号密码登录" style="margin-top: 4vh;" @click="sendMessage"></wTextButton>
+        <wTextButton text="没有账号？马上注册" @click="registerMessage" class="login-register-text"></wTextButton>
     </div>
 </template>
 
 <script setup>
 import wSubmitButton from './widgets/wSubmitButton.vue';
+import wTextButton from './widgets/wTextButton.vue';
 
 const emit = defineEmits(['changeMode', 'jumpToRegisterPage', 'userLogin']);
 
@@ -118,17 +119,6 @@ html,
     border-bottom: 1px var(--accent-clr) solid;
 }
 
-.login-change-text {
-    text-decoration: none;
-    color: var(--accent-clr);
-    margin-top: 4vh;
-    transition: color 0.1s ease;
-}
-
-.login-change-text:hover {
-    color: var(--text-clr);
-}
-
 .login-send-code {
     margin-left: 1vw;
     border: none;
@@ -143,12 +133,5 @@ html,
     position: absolute;
     bottom: 4vh;
     right: 3vw;
-    text-decoration: none;
-    color: var(--accent-clr);
-    transition: color 0.1s ease;
-}
-
-.login-register-text:hover {
-    color: var(--text-clr);
 }
 </style>

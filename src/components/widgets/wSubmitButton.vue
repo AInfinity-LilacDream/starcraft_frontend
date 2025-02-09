@@ -26,10 +26,10 @@ const props = defineProps({
 
 onMounted(() => {
     if (props.fontSize != undefined) {
-        wSubmitButton.value.style.fontSize=props.fontSize;
+        wSubmitButton.value.style.fontSize = props.fontSize;
     }
     if (props.width != undefined) {
-        wSubmitButton.value.style.width=props.width;
+        wSubmitButton.value.style.width = props.width;
     }
 })
 </script>
